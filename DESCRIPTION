@@ -1,0 +1,21 @@
+Package: superTSNE
+Title: Data preprocessing for supervised t-SNE
+Version: 0.0.0.9000
+Authors@R: 
+    c(person(given="Zhaoyuan",
+            family="Fang",
+            role=c("aut"),
+            email="zhaoyuanfang@intl.zju.edu.cn"),
+    person(given="Yuhuai",
+          family="Guo",
+          role=c("aut","cre"),
+          email="yuhuai.24@intl.zju.edu.cn",
+          comment=c(ORCID="0000-0002-3242-281X"))
+    )
+Description: By attenuating or eliminating certain confounding factors (such as individual differences, batch effects, or platform variations) that may affect visualization, this method highlights distribution patterns driven by biological factors (e.g., cell types, health/disease status). Specifically, the function calculates a distance matrix and applies a supervised transformation to it, ensuring that data sharing the same labels are brought closer together in subsequent dimensionality reduction or clustering analyses.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Depends: 
+    Rfast
