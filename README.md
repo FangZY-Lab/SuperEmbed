@@ -2,9 +2,9 @@
 
 **Supervised distance adjustment for embedding and visualization**
 
-**SuperEmbed** is an R package for supervised adjustment of distance matrices before downstream dimensionality reduction or clustering. The repository is named `SuperEmbed`; the current R package name used in `DESCRIPTION` is `superTSNE`.
+**SuperEmbed** is an R package for supervised adjustment of distance matrices before downstream dimensionality reduction or clustering.
 
-**SuperEmbed** 是一个用于在降维或聚类前进行有监督距离矩阵调整的 R 包。本仓库名为 `SuperEmbed`，当前 `DESCRIPTION` 中的 R 包名为 `superTSNE`。
+**SuperEmbed** 是一个用于在降维或聚类前进行有监督距离矩阵调整的 R 包。
 
 ![SuperEmbed workflow](man/figures/superembed-workflow.png)
 
@@ -29,7 +29,7 @@ The package is designed for visualization workflows where known biological or ex
 ```r
 install.packages("devtools")
 devtools::install_github("FangZY-Lab/SuperEmbed")
-library(superTSNE)
+library(SuperEmbed)
 ```
 
 ### Dependencies
@@ -125,7 +125,7 @@ SuperEmbed 用于根据样本标签对原始距离矩阵进行监督式调整。
 ```r
 install.packages("devtools")
 devtools::install_github("FangZY-Lab/SuperEmbed")
-library(superTSNE)
+library(SuperEmbed)
 ```
 
 ### 依赖

@@ -1,4 +1,4 @@
-Package: superTSNE
+Package: SuperEmbed
 Title: Data preprocessing for supervised t-SNE
 Version: 0.0.0.9000
 Authors@R: 
