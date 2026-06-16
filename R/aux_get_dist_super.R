@@ -1,10 +1,10 @@
-#' @title Get supervised distance matrix with the 's' value
-#' @description Applicable when the appropriate s value has already been selected
+#' @title Generate a supervised distance matrix with a fixed shift value
+#' @description Generate an adjusted distance matrix when the shift value `s` has already been selected.
 #'
-#' @param mat A data frame or matrix that needs to be processed. row:variable col:sample
-#' @param dmat If you have already calculated the distance matrix then enter it here
+#' @param mat A data frame or matrix to be processed. Rows are variables and columns are samples.
+#' @param dmat A precomputed distance matrix. Used as an alternative input to `mat`.
 #' @param class.labels A vector of class labels
-#' @param s If you have already calculated the "s" value then enter it here
+#' @param s Shift value added to distances between samples from different classes.
 #'
 #' @returns A distance matrix
 #' @importFrom Rfast Dist

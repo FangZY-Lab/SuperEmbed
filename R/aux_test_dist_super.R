@@ -1,12 +1,12 @@
-#' @title Data preprocessing for supervised t-SNE
+#' @title Supervised distance matrix adjustment for dimensionality reduction
 #'
-#' @param mat A data frame or matrix that needs to be processed. row:variable col:sample
-#' @param dmat Already calculated distance matrix
+#' @param mat A data frame or matrix to be processed. Rows are variables and columns are samples.
+#' @param dmat A precomputed distance matrix. Used as an alternative input to `mat`.
 #' @param class.labels A vector of class labels
-#' @param s Already calculated "s" value
+#' @param s Shift value added to distances between samples from different classes.
 #' @param nn.purity The purity of the nearest neighbors, 0~1
 #' @param k Number of nearest neighbors
-#' @param n Number of points to interpolate during liner regression
+#' @param n Number of points used to interpolate the relationship between `s` and nearest-neighbor purity.
 #' @param ret.stat Return the n point of the correspondence between "s" and purity. Choose FALSE to return the distance matrix
 #'
 #' @returns A distance matrix or a data frame containing the correspondence between "s" and purity
@@ -44,7 +44,7 @@ aux_test_dist_super = function(mat=NULL, dmat=NULL, class.labels, s=NULL, nn.pur
   }else{
     max.s = (within.max-between.min) + (between.mid-between.min)
   }
-  #细化不同移动对neighbourhood的影响
+  #细化不同移动对最近邻结构的影响
   ss = seq(0,max.s,length.out=n)
   fracs.between.knn = c()
   for(s in ss){

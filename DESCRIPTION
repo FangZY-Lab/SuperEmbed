@@ -1,5 +1,5 @@
 Package: SuperEmbed
-Title: Data preprocessing for supervised t-SNE
+Title: Supervised Distance Matrix Adjustment for Dimensionality Reduction and Visualization
 Version: 0.0.0.9000
 Authors@R: 
     c(person(given="Zhaoyuan",

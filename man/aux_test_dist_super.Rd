@@ -2,7 +2,7 @@
 % Please edit documentation in R/aux_test_dist_super.R
 \name{aux_test_dist_super}
 \alias{aux_test_dist_super}
-\title{Data preprocessing for supervised t-SNE}
+\title{Supervised distance matrix adjustment for dimensionality reduction}
 \usage{
 aux_test_dist_super(
   mat = NULL,
@@ -16,19 +16,19 @@ aux_test_dist_super(
 )
 }
 \arguments{
-\item{mat}{A data frame or matrix that needs to be processed. row:variable col:sample}
+\item{mat}{A data frame or matrix to be processed. Rows are variables and columns are samples.}
 
-\item{dmat}{Already calculated distance matrix}
+\item{dmat}{A precomputed distance matrix. Used as an alternative input to \code{mat}.}
 
 \item{class.labels}{A vector of class labels}
 
-\item{s}{Already calculated "s" value}
+\item{s}{Shift value added to distances between samples from different classes.}
 
 \item{nn.purity}{The purity of the nearest neighbors, 0~1}
 
 \item{k}{Number of nearest neighbors}
 
-\item{n}{Number of points to interpolate during liner regression}
+\item{n}{Number of points used to interpolate the relationship between \code{s} and nearest-neighbor purity.}
 
 \item{ret.stat}{Return the n point of the correspondence between "s" and purity. Choose FALSE to return the distance matrix}
 }
@@ -36,5 +36,5 @@ aux_test_dist_super(
 A distance matrix or a data frame containing the correspondence between "s" and purity
 }
 \description{
-Data preprocessing for supervised t-SNE
+Supervised distance matrix adjustment for dimensionality reduction
 }

@@ -2,22 +2,22 @@
 % Please edit documentation in R/aux_get_dist_super.R
 \name{aux_get_dist_super}
 \alias{aux_get_dist_super}
-\title{Get supervised distance matrix with the 's' value}
+\title{Generate a supervised distance matrix with a fixed shift value}
 \usage{
 aux_get_dist_super(mat = NULL, dmat = NULL, class.labels, s = 10)
 }
 \arguments{
-\item{mat}{A data frame or matrix that needs to be processed. row:variable col:sample}
+\item{mat}{A data frame or matrix to be processed. Rows are variables and columns are samples.}
 
-\item{dmat}{If you have already calculated the distance matrix then enter it here}
+\item{dmat}{A precomputed distance matrix. Used as an alternative input to \code{mat}.}
 
 \item{class.labels}{A vector of class labels}
 
-\item{s}{If you have already calculated the "s" value then enter it here}
+\item{s}{Shift value added to distances between samples from different classes.}
 }
 \value{
 A distance matrix
 }
 \description{
-Applicable when the appropriate s value has already been selected
+Generate an adjusted distance matrix when the shift value \code{s} has already been selected.
 }

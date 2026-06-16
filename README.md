@@ -1,6 +1,6 @@
 # SuperEmbed
 
-**Supervised distance adjustment for embedding and visualization**
+**Supervised distance matrix adjustment for dimensionality reduction and visualization**
 
 **SuperEmbed** is an R package for supervised adjustment of distance matrices before downstream dimensionality reduction or clustering.
 
