@@ -34,21 +34,25 @@ aux_test_dist_super = function(mat=NULL, dmat=NULL, class.labels, s=NULL, nn.pur
   within.max = max(dmat[inds])
   between.min = min(dmat[!inds])
   between.mid = mean(dmat[!inds])
+  epsilon = between.min * 0.01
+  min.s = -between.min + epsilon
   if(!is.null(s)){
+    s = max(s, min.s)
     dmat2 = ifelse(inds, dmat, dmat+s)
     return(as.dist(dmat2))
   }
-  #确定最大移动max.s
+  #Determine the max.s
   if(within.max<=between.min){
     max.s = between.mid-between.min
   }else{
     max.s = (within.max-between.min) + (between.mid-between.min)
   }
-  #细化不同移动对最近邻结构的影响
-  ss = seq(0,max.s,length.out=n)
+  #Refine the influence of different s on the nearest neighbor structure
+  ss = sort(unique(c(seq(min.s, max.s, length.out=n), 0)))
   fracs.between.knn = c()
   for(s in ss){
     dmat.s = ifelse(inds, dmat, dmat+s)
+    diag(dmat.s) = Inf 
     qcut = matrixStats::rowQuantiles(dmat.s, probs=k/N)
     n.between.knn = sum((dmat.s<=qcut) & !inds)
     frac.between.knn = n.between.knn/(N*k)
@@ -56,15 +60,17 @@ aux_test_dist_super = function(mat=NULL, dmat=NULL, class.labels, s=NULL, nn.pur
     rm(dmat.s); gc()
   }
   #names(fracs.between.knn) = ss
-
-  fil = !duplicated(fracs.between.knn) #优先保留前面的（对应于小的shift）
+  
+  #De-duplication, removing duplicates, nn.purity corresponding to s
+  ord = order(abs(ss))
+  fil = sort(ord[!duplicated(fracs.between.knn[ord])])
   ss = ss[fil]
   fracs.between.knn = fracs.between.knn[fil]
-
+  
   fitted.fun = approxfun(fracs.between.knn,ss,rule=2) #rule=2 to return safe estimates
   s.est = fitted.fun(1-nn.purity)
+  s.est = max(s.est, min.s)
   print(s.est)
-  s.est = pmax(s.est,0)
   if(ret.stat){
     return(cbind(s=ss,nn.purity=1-fracs.between.knn))
   }else{
